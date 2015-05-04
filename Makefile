@@ -1,8 +1,8 @@
-VIM_DIR = vim
-GIT_DIR = git
+DOTFILE_DIR = $(HOME)/code/dotfiles
 
 all: link
 
 link:
-	$(MAKE) -C $(VIM_DIR) link
-	$(MAKE) -C $(GIT_DIR) link
+	$(MAKE) -C vim link
+	$(MAKE) -C git link
+	ln -sf $(DOTFILE_DIR)/gemrc $(HOME)/.gemrc
