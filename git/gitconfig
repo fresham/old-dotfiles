@@ -1,0 +1,28 @@
+[user]
+	name = Cody Frazer
+	email = frazercr@gmail.com
+[core]
+	editor = vim
+	excludesfile = /home/cody/.gitignore
+	whitespace = trailing-space,space-before-tab
+[alias]
+	s = status
+	b = branch
+	co = checkout
+	p = push
+	po = push origin
+	pom = push origin master
+	poh = push origin HEAD
+	u = pull
+	uo = pull origin
+	uom = pull origin master
+	uoh = pull origin HEAD
+	d = diff
+	dc = diff --cached
+	wd = diff --word-diff
+	wdc = diff --word-diff --cached
+	l = log
+[color]
+	ui = auto
+[merge]
+	tool = vimdiff
