@@ -6,22 +6,29 @@
 	excludesfile = /home/cody/.gitignore
 	whitespace = trailing-space,space-before-tab
 [alias]
-	s = status
 	b = branch
+	bn = rev-parse --abrev-ref HEAD
+	c = commit
+	cg = config --global
+	cm = commit -m
 	co = checkout
-	p = push
-	po = push origin
-	pom = push origin master
-	poh = push origin HEAD
-	u = pull
-	uo = pull origin
-	uom = pull origin master
-	uoh = pull origin HEAD
+	cp = cherry-pick
+	cv = commit -v
 	d = diff
 	dc = diff --cached
+	dss = diff --shortstat
+	l = log
+	p = push
+	po = push origin
+	poh = push origin HEAD
+	pom = push origin master
+	s = status
+	u = pull
+	uo = pull origin
+	uoh = pull origin HEAD
+	uom = pull origin master
 	wd = diff --word-diff
 	wdc = diff --word-diff --cached
-	l = log
 [color]
 	ui = auto
 [merge]
