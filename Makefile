@@ -19,7 +19,7 @@ base16:
 link:
 	$(MAKE) -C vim
 	DOTFILE_DIR=$(DOTFILE_DIR) $(MAKE) -C git link
-	ln -svf $(DOTFILE_DIR)/bash_profile $(HOME)/.bash_profile
-	ln -svf $(DOTFILE_DIR)/bash_aliases $(HOME)/.bash_aliases
+	ln -svf $(DOTFILE_DIR)/bash_profile.sh $(HOME)/.bash_profile
+	ln -svf $(DOTFILE_DIR)/bash_aliases.sh $(HOME)/.bash_aliases
 	ln -svf $(DOTFILE_DIR)/tmux.conf $(HOME)/.tmux.conf
 	ln -svf $(DOTFILE_DIR)/gemrc $(HOME)/.gemrc
