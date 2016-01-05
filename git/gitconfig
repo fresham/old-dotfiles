@@ -9,6 +9,7 @@
 	b = branch
 	bn = rev-parse --abrev-ref HEAD
 	c = commit
+  cl = clone
 	cg = config --global
 	cm = commit -m
 	co = checkout
