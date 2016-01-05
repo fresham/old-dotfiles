@@ -1,3 +1,6 @@
 [submodule "vim"]
 	path = vim
 	url = git@github.com:fresham/vim.git
+[submodule "base16-builder"]
+	path = base16-builder
+	url = git@github.com:fresham/base16-builder.git
