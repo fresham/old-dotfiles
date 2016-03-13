@@ -30,7 +30,13 @@
 	uom = pull origin master
 	wd = diff --word-diff
 	wdc = diff --word-diff --cached
+	f = fetch
+	ca = commit --amend
+	a = add
+	pr = log ...master
 [color]
 	ui = auto
 [merge]
 	tool = vimdiff
+[push]
+	default = simple
