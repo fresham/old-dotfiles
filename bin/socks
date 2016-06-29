@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+require 'pp'
+
+@port = 8000
+@pidfile = File.join( '/', 'tmp', 'socks_sshd.pid' )
+@identity_file = File.join( ENV['HOME'], '.ssh', 'EC2.pem' )
+
+def start_daemon
+  new_pid = spawn( "ssh -D #{@port} -CqN ubuntu@fresham.me -i #{@identity_file}" )
+  File.write( @pidfile, new_pid )
+end
+
+def stop_daemon
+  Process.kill( 'QUIT', current_pid ) if status == :on
+  clear_pidfile
+end
+
+def error( message )
+  abort "ERROR: #{message}"
+end
+
+def info( message )
+  puts "INFO: #{message}"
+end
+
+def status
+  daemon_running? ? :on : :off
+end
+
+def daemon_running?
+  raise Errno::ESRCH if current_pid.zero?
+  Process.kill( 0, current_pid )
+  true
+rescue Errno::ESRCH,  # invalid or no such process
+       Errno::EPERM,  # insuffecient permissions
+       Errno::ENOENT  # no PID file (current_pid)
+  clear_pidfile
+  false
+end
+
+def clear_pidfile
+  FileUtils.rm @pidfile if File.exists? @pidfile
+end
+
+def current_pid
+  File.read( @pidfile ).to_i
+end
+
+case { command: ARGV.first, status: status }
+
+when { command: 'on', status: :on }
+  info 'Daemon already running.'
+
+when { command: 'on', status: :off }
+  start_daemon
+
+when { command: 'off', status: :on }, { command: 'off', status: :off }
+  stop_daemon
+
+when { command: 'status', status: :on }
+  puts "Running - #{current_pid}"
+
+when { command: 'status', status: :off }
+  puts 'Stopped'
+
+else
+  error 'Argument should be `on`, `off`, or `status`.'
+
+end
